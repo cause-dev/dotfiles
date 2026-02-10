@@ -1,0 +1,5 @@
+firefox
+firefox-langpacks
+gnome-software
+gnome-software-rpm-ostree
+PackageKit-glib

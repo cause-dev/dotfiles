@@ -1,0 +1,11 @@
+[user]
+	name = cause-dev
+	email = cause.dev@proton.me
+[gpg]
+	format = ssh
+[commit]
+	gpgSign = false
+[init]
+	defaultBranch = main
+[credential]
+	helper = "!f() { /var/home/arslan/.vscode-server/bin/bf9252a2fb45be6893dd8870c0bf37e2e1766d61/node /tmp/vscode-remote-containers-a904cab3-c853-49ec-ae6c-664d35ffbe24.js git-credential-helper $*; }; f"
