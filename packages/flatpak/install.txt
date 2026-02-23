@@ -7,9 +7,6 @@ com.ranfdev.DistroShelf
 com.visualstudio.code
 de.haeckerfelix.Fragments
 dev.vencord.Vesktop
-io.frama.tractor.carburetor
-io.github.BrisklyDev.Brisk
-io.github.diegopvlk.Cine
 io.github.flattool.Warehouse
 io.github.giantpinkrobots.varia
 io.podman_desktop.PodmanDesktop

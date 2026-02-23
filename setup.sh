@@ -17,7 +17,7 @@ sudo -u "$ACTUAL_USER" bash <<EOF
     export PATH="$USER_HOME/.local/bin:\$PATH"
     export HOME="$USER_HOME"
 
-    ./scripts/02-mise-bootstrap.sh  # Installs mise/just/chezmoi
+    ./scripts/02-mise-bootstrap.sh  # Installs mise/chezmoi
     ./scripts/03-dotfiles.sh        # Pulls your repo
     ./scripts/04-mise-install.sh    # Installs starship/bat/lsd
     ./scripts/05-flatpaks.sh        # Installs GUI apps
