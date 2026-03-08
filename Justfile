@@ -1,7 +1,7 @@
 set shell := ["/usr/bin/fish", "-c"]
 
 # RUN THIS AFTER FIRST BOOT
-setup: install-mise install-flatpaks
+setup: install-mise install-fonts install-flatpaks
        @echo "🚀 Environment setup complete!"
        @echo "💡 Tip: Restart your terminal to activate mise."
 
@@ -10,6 +10,23 @@ install-mise:
     @echo "📦 Installing mise..."
     curl https://mise.run | sh
     ~/.local/bin/mise install -y
+
+# install nerd font
+install-fonts:
+    @echo "🖌️ Checking for Adwaita Mono Nerd Font..."
+    @if [ ! -d "$HOME/.local/share/fonts/AdwaitaMono" ]; then \
+        echo "📥 Downloading official v3.4.0 archive..."; \
+        mkdir -p "$HOME/.local/share/fonts/AdwaitaMono"; \
+        curl -fLo /tmp/AdwaitaMono.tar.xz https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/AdwaitaMono.tar.xz; \
+        echo "📦 Extracting to ~/.local/share/fonts/AdwaitaMono..."; \
+        tar -xJf /tmp/AdwaitaMono.tar.xz -C "$HOME/.local/share/fonts/AdwaitaMono"; \
+        rm /tmp/AdwaitaMono.tar.xz; \
+        echo "🔄 Refreshing font cache..."; \
+        fc-cache -f "$HOME/.local/share/fonts"; \
+        echo "✅ Adwaita Mono Nerd Font family installed!"; \
+    else \
+        echo "✨ Font family already exists, skipping."; \
+    fi
 
 
 # Install all the flatpaks
