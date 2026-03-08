@@ -49,11 +49,11 @@ update:
 # Sync current GNOME settings back to dotfiles
 dsync:
     @echo "🎨 Exporting GNOME settings..."
-    dconf dump /org/gnome/ > ~/.config/dconf/settings.ini
+    dconf dump / > ~/.config/dconf/settings.ini
     chezmoi re-add ~/.config/dconf/settings.ini
     @echo "✅ Settings synced. Ready to 'git push'."
 
 # Manually re-apply GNOME settings from dotfiles
 dload:
     @echo "🎨 Loading GNOME settings from dotfiles..."
-    dconf load /org/gnome/ < ~/.config/dconf/settings.ini
+    dconf load -f / < ~/.config/dconf/settings.ini
