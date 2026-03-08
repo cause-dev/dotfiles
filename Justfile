@@ -1,54 +1,48 @@
-# Justfile - The Orchestrator Dashboard
-# Logic is stored in ./scripts/, this file provides the interface.
+set shell := ["/usr/bin/fish", "-c"]
 
-# Sync everything to match the repository state
-sync: system tools apps desktop completions
+# RUN THIS AFTER FIRST BOOT
+setup: install-mise install-flatpaks
+       @echo "🚀 Environment setup complete!"
+       @echo "💡 Tip: Restart your terminal to activate mise."
 
-# --- [ 01 SYSTEM ] ---
-# Update OS and layer essential packages
-system:
-    sudo ./scripts/01-system.sh
+# install or update mise-en-place and all the packages
+install-mise:
+    @echo "📦 Installing mise..."
+    curl https://mise.run | sh
+    ~/.local/bin/mise install -y
+
+
+# Install all the flatpaks
+install-flatpaks:
+    @echo "📥 Installing Flatpaks..."
+    flatpak install -y flathub \
+        com.visualstudio.code \
+        md.obsidian.Obsidian \
+        io.podman_desktop.PodmanDesktop \
+        org.mozilla.firefox \
+        com.bitwarden.desktop \
+        com.github.tchx84.Flatseal
+    flatpak update -y
 
 # Update the whole system
 update:
-    ./scripts/update.sh
+    @echo "🔄 Updating OS Image..."
+    sudo bootc upgrade
+    @echo "🔄 Updating Flatpaks..."
+    flatpak update -y
+    @echo "🔄 Updating mise runtimes..."
+    mise self-update -y
+    @echo "🔄 Updating mise packages..."
+    mise upgrade
 
-# --- [ 04 MISE TOOLS ] ---
-# Install/Update CLI tools from ~/.config/mise/config.toml
-tools:
-    ./scripts/04-mise-install.sh
+# Sync current GNOME settings back to dotfiles
+dsync:
+    @echo "🎨 Exporting GNOME settings..."
+    dconf dump /org/gnome/ > ~/.config/dconf/settings.ini
+    chezmoi re-add ~/.config/dconf/settings.ini
+    @echo "✅ Settings synced. Ready to 'git push'."
 
-# --- [ 05 FLATPAKS ] ---
-# Install/Update GUI apps from packages/flatpaks.txt
-apps:
-    ./scripts/05-flatpaks.sh
-
-# --- [ 06 DESKTOP ] ---
-# Apply GNOME settings from the dconf dump
-desktop:
-    ./scripts/06-desktop.sh
-
-# --- [ MAINTENANCE & UTILS ] ---
-
-# Update dotfiles manually (Calls script 03)
-update-configs:
-    ./scripts/03-dotfiles.sh
-
-# Save current GNOME settings (The one logic piece kept here for convenience)
-dump-settings:
-    @echo "💾 Saving GNOME settings..."
-    mkdir -p ~/.config/dconf
-    dconf dump / > ~/.config/dconf/gnome_settings.dconf
-    @echo "✅ Saved. Now run: chezmoi add ~/.config/dconf/gnome_settings.dconf"
-
-# Update fish completions
-completions:
-    @echo "🐚 Updating fish completions..."
-    fish -c "fish_update_completions"
-
-# Deep clean system
-cleanup:
-    @echo "🧹 Cleaning system..."
-    rpm-ostree cleanup -m
-    flatpak uninstall --unused -y
-    mise prune -y
+# Manually re-apply GNOME settings from dotfiles
+dload:
+    @echo "🎨 Loading GNOME settings from dotfiles..."
+    dconf load /org/gnome/ < ~/.config/dconf/settings.ini
