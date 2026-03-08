@@ -1,4 +1,4 @@
-set shell := ["/usr/bin/fish", "-c"]
+set shell := ["/usr/bin/bash", "-c"]
 
 # RUN THIS AFTER FIRST BOOT
 setup: install-mise install-fonts install-flatpaks
