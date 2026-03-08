@@ -1,3 +1,0 @@
-android-tools
-distrobox
-fish

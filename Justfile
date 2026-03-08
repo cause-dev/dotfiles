@@ -16,9 +16,20 @@ install-mise:
 install-flatpaks:
     @echo "📥 Installing Flatpaks..."
     flatpak install -y flathub \
+        com.github.neithern.g4music \
+        com.mattjakeman.ExtensionManager \
+        com.protonvpn.www \
+        com.ranfdev.DistroShelf \
+        de.haeckerfelix.Fragments \
+        dev.vencord.Vesktop \
+        io.github.flattool.Warehouse \
+        org.cryptomator.Cryptomator \
+        org.gnome.DejaDup \
+        org.gnome.FileRoller \
+        org.signal.Signal \
+        org.telegram.desktop \
         com.visualstudio.code \
         md.obsidian.Obsidian \
-        io.podman_desktop.PodmanDesktop \
         org.mozilla.firefox \
         com.bitwarden.desktop \
         com.github.tchx84.Flatseal
