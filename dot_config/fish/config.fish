@@ -20,6 +20,9 @@ if status is-interactive
     alias cat="bat"
     alias lg="lazygit"
 
+    # dconf backup
+    alias dsync="dconf dump /org/gnome/ > ~/.config/dconf/settings.ini; chezmoi re-add ~/.config/dconf/settings.ini"
+
     # --- Tool Initializations ---
 
     # Initialize mise (manages your tool versions)

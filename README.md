@@ -53,3 +53,8 @@ flatpak update -y
 ```bash
 dconf load / < "$HOME/.config/dconf/gnome_settings.dconf"
 ```
+
+### Override default packages
+```bash
+rpm-ostree override remove firefox firefox-langpacks gnome-software gnome-software-rpm-ostree PackageKit-glib
+```
