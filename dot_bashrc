@@ -11,10 +11,3 @@ if ! [[ "$PATH" =~ "$HOME/.local/bin" ]]; then
     export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 
-# 3. Switch to Fish (DO THIS LAST)
-# Logic: If interactive AND fish exists, THEN switch.
-if [[ $- == *i* ]] && command -v fish >/dev/null 2>&1; then
-    exec fish
-fi
-
-# (Any lines after this will only run if fish is NOT installed)
