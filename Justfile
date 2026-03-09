@@ -49,7 +49,11 @@ install-flatpaks:
         md.obsidian.Obsidian \
         org.mozilla.firefox \
         com.bitwarden.desktop \
-        com.github.tchx84.Flatseal
+        com.github.tchx84.Flatseal \
+        io.mpv.Mpv \
+        org.gnome.NautilusPreviewer \
+        org.gnome.Papers \
+        org.gnome.TextEditor
     flatpak update -y
 
 # Update the whole system
