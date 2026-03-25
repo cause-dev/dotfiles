@@ -1,1 +1,6 @@
 [tools]
+age = "latest"
+bat = "latest"
+chezmoi = "latest"
+lsd = "latest"
+starship = "latest"

@@ -1,0 +1,7 @@
+# My local Master Key (Works offline)
+{{ include (joinPath .chezmoi.homeDir ".ssh/id_ed25519.pub") }}
+
+# Pull keys from my GitHub profile
+{{- range (gitHubKeys "cause-dev") }}
+{{ .Key }}
+{{- end }}
