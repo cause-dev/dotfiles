@@ -1,8 +1,9 @@
-encryption = "gpg"
+encryption = "age"
 
-[gpg]
-symmetric = true
-args = ["--quiet"]
+[age]
+    identity = "~/.config/chezmoi/key.txt"
+    recipient = "age17cxlu2390df50paz9epu58c2le845c93c94kqtntgjzaclcf8vjsr736ce"
+
 
 [edit]
 command = "vi"
