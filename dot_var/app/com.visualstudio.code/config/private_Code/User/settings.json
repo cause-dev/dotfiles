@@ -1,0 +1,10 @@
+{
+    "workbench.iconTheme": "vscode-icons",
+    "dev.containers.dockerComposePath": "/run/host/usr/bin/podman-host",
+    "dev.containers.dockerPath": "/run/host/usr/bin/podman-host",
+    "dev.containers.defaultFeatures": {
+        
+
+    },
+    "files.autoSave": "afterDelay"
+}
