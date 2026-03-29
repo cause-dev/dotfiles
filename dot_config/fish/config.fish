@@ -6,9 +6,6 @@ fish_add_path $HOME/.local/bin
 if status is-interactive
 
     # --- Aliases ---
-    # VS Code Flatpak
-    alias code="flatpak run com.visualstudio.code"
-    
     # VPN Management
     alias startRiseUpVPN="sudo systemctl start openvpn-client@riseup"
     alias stopRiseUpVPN="sudo systemctl stop openvpn-client@riseup"
