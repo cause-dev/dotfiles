@@ -13,6 +13,9 @@ if status is-interactive
     alias startRiseUpVPN="sudo systemctl start openvpn-client@riseup"
     alias stopRiseUpVPN="sudo systemctl stop openvpn-client@riseup"
     alias restartRiseUpVPN="sudo systemctl restart openvpn-client@riseup"
+    alias updateRiseUpVpnConf="sudo ~/.local/bin/riseup-vpn-configurator --update"
+    alias changeRiseUpVpnServer="sudo vi /etc/riseup-vpn.yaml"
+    alias generateRiseUpVpnConfig="sudo ~/.local/bin/riseup-vpn-configurator --generate-config"
     
     # Modern CLI replacements
     alias ls="lsd"
