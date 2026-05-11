@@ -7,8 +7,6 @@ if status is-interactive
 
     # --- Aliases ---
     
-    alias code="flatpak run com.visualstudio.code" 
-
     # VPN Management
     alias startRiseUpVPN="sudo systemctl start openvpn-client@riseup"
     alias stopRiseUpVPN="sudo systemctl stop openvpn-client@riseup"
