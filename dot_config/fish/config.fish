@@ -18,13 +18,12 @@ if status is-interactive
     # Modern CLI replacements
     alias ls="lsd"
     alias ll="lsd -l"
-    alias cat="bat"
     alias lg="lazygit"
 
      # --- Tool Initializations ---
 
     # Initialize mise (manages your tool versions)
-    # We use 'type -q' to check if it exists before running to avoid errors
+    # We use 'type -q to check if it exists before running to avoid errors
     if type -q mise
         mise activate fish | source
     end
